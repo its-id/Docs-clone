@@ -1,20 +1,16 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { PlusIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import docsIcon from "../../assets/docs.png";
+import userIcon from "../../assets/user-icon.png";
 
 const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  name: "Indrakant Dana",
+  email: "ik.dana24@gmail.com",
 };
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
+
+const navigation = ["File", "Edit", "View", "Insert", "Format", "Tools", "Extensions", "Help"];
+
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -26,13 +22,15 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const [docName, setDocName] = useState("Untitled Document");
+
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 justify-between">
-              <div className="flex">
+          <div className="mx-auto px-4 sm:px-6 lg:px-3">
+            <div className="flex h-16 justify-between items-center mt-1">
+              <div className="flex md:items-center">
                 <div className="-ml-2 mr-2 flex items-center md:hidden">
                   {/* Mobile menu button */}
                   <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -41,58 +39,62 @@ const Navbar = () => {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
+                  <img className="block h-10 w-auto lg:hidden" src={docsIcon} alt="Your Company" />
+                  <img className="hidden h-10 w-auto lg:block" src={docsIcon} alt="Your Company" />
                 </div>
-                <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "px-3 py-2 rounded-md text-sm font-medium"
-                      )}
-                      aria-current={item.current ? "page" : undefined}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
+                <div className="hidden md:flex md:flex-col md:items-baseline md:space-x-2">
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="text"
+                      name="docName"
+                      id="docName"
+                      className="w-auto rounded-md border-0 hover:border-gray-500 hover:ring-gray-500 text-lg mx-0 py-0 px-2.5"
+                      defaultValue={docName}
+                      onChange={(e) => setDocName(e.target.value)}
+                    />
+                    <span class="material-symbols-outlined text-lg font-medium px-1 rounded-full cursor-pointer hover:bg-gray-100">star</span>
+                    <span class="material-symbols-outlined text-lg font-medium px-1 rounded-full cursor-pointer hover:bg-gray-100">
+                      drive_file_move
+                    </span>
+                    <span class="material-symbols-outlined text-lg font-medium px-1 rounded-full cursor-pointer hover:bg-gray-100">cloud_done</span>
+                  </div>
+
+                  <div className="flex flex-row mt-1 ml-0">
+                    {navigation.map((item, idx) => (
+                      <button type="button" key={idx} className="px-2.5 text-sm font-normal rounded hover:bg-gray-100">
+                        {item}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="flex-shrink-0">
+                <div className="flex-shrink-0 flex items-center md:space-x-2">
+                  <span class="material-symbols-outlined text-base md:text-2xl font-medium px-2 py-1 rounded-full cursor-pointer text-gray-600 hover:bg-gray-100">
+                    history
+                  </span>
+                  <span class="material-symbols-outlined text-base md:text-2xl font-medium px-2 py-1 rounded-full cursor-pointer text-gray-600 hover:bg-gray-100">
+                    comment
+                  </span>
+                  <button type="button" className="flex space-x-2 items-center px-2.5 py-1 font-medium rounded-full hover:bg-gray-100 ">
+                    <span class="material-symbols-outlined text-base md:text-2xl text-gray-600 ">videocam</span>
+                    <span class="material-symbols-outlined text-base md:text-2xl text-gray-600 ">arrow_drop_down</span>
+                  </button>
                   <button
                     type="button"
-                    className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="flex items-center md:space-x-2 rounded-full bg-[#c2e7ff] hover:bg-sky-200 px-5 py-1 font-medium hover:shadow-lg focus:ring-offset-2 focus:ring-offset-gray-800"
                   >
-                    <PlusIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                    <span>New Job</span>
+                    <span className="material-symbols-outlined text-base md:text-xl text-gray-800">group</span>
+                    <span className="text-sm text-gray-800 hidden md:inline">Share</span>
                   </button>
                 </div>
-                <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
-                  <button
-                    type="button"
-                    className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-
+                <div className="hidden md:ml-2 md:flex md:flex-shrink-0">
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <Menu.Button className="flex rounded-full text-sm focus:ring-2 focus:ring-white focus:ring-offset-3 focus:ring-offset-gray-600">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                        <img className="h-8 w-8 rounded-full" src={userIcon} alt="" />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -105,8 +107,8 @@ const Navbar = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        {userNavigation.map((item) => (
-                          <Menu.Item key={item.name}>
+                        {userNavigation.map((item, idx) => (
+                          <Menu.Item key={idx}>
                             {({ active }) => (
                               <a href={item.href} className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
                                 {item.name}
@@ -124,45 +126,44 @@ const Navbar = () => {
 
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  name="docName"
+                  id="docName"
+                  className="w-auto rounded-md border-0 hover:border-gray-500 hover:ring-gray-500 text-lg mx-0 py-0 px-2.5"
+                  defaultValue={docName}
+                  onChange={(e) => setDocName(e.target.value)}
+                />
+                <span class="material-symbols-outlined text-sm font-medium px-1 rounded-full cursor-pointer hover:bg-gray-100">star</span>
+                <span class="material-symbols-outlined text-sm font-medium px-1 rounded-full cursor-pointer hover:bg-gray-100">drive_file_move</span>
+                <span class="material-symbols-outlined text-lg font-medium px-1 rounded-full cursor-pointer hover:bg-gray-100">cloud_done</span>
+              </div>
+              <div className="flex flex-wrap items-center">
+                {navigation.map((item, idx) => (
+                  <button type="button" key={idx} className="px-2.5 mb-2 text-sm font-normal rounded hover:bg-gray-100">
+                    {item}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="border-t border-gray-700 pt-4 pb-3">
               <div className="flex items-center px-5 sm:px-6">
                 <div className="flex-shrink-0">
-                  <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                  <img className="h-10 w-10 rounded-full" src={userIcon} alt="" />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-white">{user.name}</div>
-                  <div className="text-sm font-medium text-gray-400">{user.email}</div>
+                  <div className="text-base">{user.name}</div>
+                  <div className="text-sm text-gray-600">{user.email}</div>
                 </div>
-                <button
-                  type="button"
-                  className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
               </div>
-              <div className="mt-3 space-y-1 px-2 sm:px-3">
-                {userNavigation.map((item) => (
+              <div className="mt-3 px-2 sm:px-3">
+                {userNavigation.map((item, idx) => (
                   <Disclosure.Button
-                    key={item.name}
+                    key={idx}
                     as="a"
                     href={item.href}
-                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    className="block rounded-md px-3 py-1 text-gray-400 hover:bg-gray-700 hover:text-gray-800"
                   >
                     {item.name}
                   </Disclosure.Button>
