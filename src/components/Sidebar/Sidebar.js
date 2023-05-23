@@ -6,6 +6,7 @@ import googleContacts from "../../assets/google-contacts.png";
 import googleMaps from "../../assets/google-maps.png";
 
 const Sidebar = () => {
+  // Downloaded official Google Icons
   return (
     <div className="h-[82vh] w-[4%] flex flex-col items-center py-5 px-1 space-y-10">
       <div className="w-9 rounded-full cursor-pointer px-2 py-2 hover:bg-gray-100">

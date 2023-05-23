@@ -132,3 +132,11 @@
   width: 100px;
   text-indent: 3px;
 }
+
+@media screen and (max-width: 768px) {
+  .horizontalRuler,
+  .connector,
+  .verticalRuler {
+    display: none;
+  }
+}

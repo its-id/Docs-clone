@@ -16,7 +16,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* EDITOR CLASSES OVERRIDE */
+/* MAIN DOCS EDITOR & TOOLBAR CLASSES OVERRIDE */
 .demo-editor {
   width: 60%;
   box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.15);
@@ -71,6 +71,19 @@ code {
 .rdw-image-control img,
 .rdw-remove-wrapper img {
   width: 90% !important;
+}
+
+@media screen and (max-width: 768px) {
+  .demo-editor {
+    width: 90%;
+    padding: 10px 20px;
+    margin: 20px auto;
+  }
+
+  .rdw-editor-toolbar {
+    width: 90%;
+    margin: 20px auto;
+  }
 }
 
 /* CUSTOM SCROLLBAR */

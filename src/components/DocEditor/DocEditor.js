@@ -6,10 +6,12 @@ import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import styles from "./DocEditor.module.css";
 
 const DocEditor = () => {
+  // EditorState is a draftjs object
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   return (
     <div className="w-[95%]">
+      {/* Three divs are used to create the horizontal and vertical rulers */}
       <div className={styles.horizontalRuler}>
         <label>1</label>
         <span class="material-symbols-outlined">arrow_drop_down</span>
@@ -30,6 +32,8 @@ const DocEditor = () => {
           <label>1</label>
         </div>
       </div>
+
+      {/* Main Editor component extracted from package react-draft-wysiwyg built on draftjs & react-draft */}
       <Editor
         editorState={editorState}
         toolbarClassName="toolbar-class"

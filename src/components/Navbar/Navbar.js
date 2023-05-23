@@ -4,24 +4,29 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import docsIcon from "../../assets/docs.png";
 import userIcon from "../../assets/user-icon.png";
 
+// User Profile for Mobile View
 const user = {
   name: "Indrakant Dana",
   email: "ik.dana24@gmail.com",
 };
 
+// Menu Links
 const navigation = ["File", "Edit", "View", "Insert", "Format", "Tools", "Extensions", "Help"];
 
+// User Profile Dropdown Links
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
 ];
 
+// Special Function to join classes
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+  // State to store document name
   const [docName, setDocName] = useState("Untitled Document");
 
   return (
@@ -124,6 +129,7 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* Mobile View */}
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
               <div className="flex items-center">
