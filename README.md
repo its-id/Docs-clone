@@ -1,4 +1,4 @@
-## Best Viewed at 1270 x 1029 resolution at 100% zooom.
+## Best Viewed at 1270 x 1029 resolution at 100% zoom.
 
 
 -------------------------------------------------------------------------
