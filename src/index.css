@@ -15,3 +15,97 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* EDITOR CLASSES OVERRIDE */
+.demo-editor {
+  width: 60%;
+  box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  padding: 10px 50px;
+  margin: 80px auto;
+  min-height: 120vh;
+}
+
+.rdw-editor-toolbar {
+  border-radius: 20px !important;
+  background-color: #edf2fa !important;
+  width: 98%;
+  margin: -15px auto;
+}
+
+.rdw-editor-toolbar > div,
+.rdw-editor-toolbar > div > div {
+  background-color: #edf2fa !important;
+}
+
+.rdw-option-active {
+  background-color: #d3e3fd !important;
+}
+
+.rdw-option-wrapper,
+.rdw-fontsize-wrapper {
+  min-width: 22px !important;
+  height: auto !important;
+  border-radius: 5px !important;
+}
+
+.rdw-dropdown-wrapper {
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.rdw-option-wrapper:hover,
+.rdw-dropdown-wrapper:hover,
+.rdw-fontsize-wrapper:hover {
+  background-color: #dadee6 !important;
+  box-shadow: none !important;
+}
+
+.rdw-option-wrapper img,
+.rdw-block-wrapper img,
+.rdw-fontsize-wrapper img,
+.rdw-colorpicker-wrapper img,
+.rdw-link-wrapper img,
+.rdw-embedded-wrapper img,
+.rdw-emoji-wrapper img,
+.rdw-image-wrapper img,
+.rdw-image-control img,
+.rdw-remove-wrapper img {
+  width: 90% !important;
+}
+
+/* CUSTOM SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  overflow: visible;
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 0 0 0 4px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 4px;
+  background-color: #dadce0;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
