@@ -1,3 +1,8 @@
+## Best Viewed at 1270 x 1029 resolution at 100% zooom.
+
+
+-------------------------------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
